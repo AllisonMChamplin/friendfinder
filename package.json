@@ -1,0 +1,26 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "A full-stack compatibility-based Friend Finder application.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "heroku": "^7.26.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllisonMChamplin/friendfinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllisonMChamplin/friendfinder/issues"
+  },
+  "homepage": "https://github.com/AllisonMChamplin/friendfinder#readme"
+}
