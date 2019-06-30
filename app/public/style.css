@@ -1,0 +1,40 @@
+body {
+font-family: 'Raleway', sans-serif;    
+}
+
+h1 {
+    font-family: 'Indie Flower', cursive;
+    color: #fff;
+}
+
+h2, h3, h4, h5, h6 {
+
+}
+/* 
+#random-background {
+    background-image: url("friend-1820040_1920.jpg") !important;
+    background-repeat: repeat;
+
+} */
+
+#random-background {
+    background-size: 100%;
+    background-position-y: -300px;
+    background-repeat: no-repeat;
+}
+
+#random-background .lead {
+    color: #fff;
+}
+
+#random-background .jumbotron {
+    border-radius: none !important;
+}
+
+.jumbofix {
+    padding: 4rem 0;
+}
+
+.bg-my-japanese-indigo {
+background-color: #254441;
+}
