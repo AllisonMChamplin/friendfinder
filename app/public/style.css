@@ -19,7 +19,6 @@ h2, h3, h4, h5, h6 {
 
 #random-background {
     background-size: 100%;
-    background-position-y: -300px;
     background-repeat: no-repeat;
 }
 
@@ -32,9 +31,34 @@ h2, h3, h4, h5, h6 {
 }
 
 .jumbofix {
-    padding: 4rem 0;
+    padding: 7.5rem 0;
 }
 
 .bg-my-japanese-indigo {
 background-color: #254441;
+}
+
+.btn {
+    background: #ff6f59;
+    color: #fff;
+}
+
+.btn:hover {
+    background: #DB504A;
+    color: #fff;
+}
+
+nav .btn {
+    background: none;
+    border: 1px solid #ff6f59;
+    margin-left: 10px;
+}
+
+.navbar {
+    background: #244340;
+}
+
+footer {
+    border-top: 1px solid #edece4;
+    padding-top: 20px;
 }
