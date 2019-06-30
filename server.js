@@ -26,10 +26,12 @@ console.log("Hi");
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "./app/public/home.html"));
+    // console.log("req: ", req);
+    // res.sendFile(path.join(__dirname, "./app/public/home.html"));
+    // res.send(req.params);
+    res.send(req);
     // console.log("hihi");
 });
-
 
 
 // Starts the server to begin listening
