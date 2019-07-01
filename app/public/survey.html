@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FriendSift Friend Finder - Express - Survey</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="app.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <a class="navbar-brand" href="#">
+                <img src="icon-red.png" alt="FriendSift icon" width="40" class="mr-2">
+                <strong>FriendSift</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                <button class="btn my-2 my-sm-0" type="submit" id="login">Log In</button>
+                <button class="btn my-2 my-sm-0" type="submit" id="signup">Sign Up!</button>
+
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+
+        <div class="py-5 sub">
+
+            <div class="container">
+                <div class="jumbotron">
+                    <h1>FriendSift</h1>
+                    <h3>The greatest resource in the galaxy for friends!</h3>
+                    <hr>
+                    <a href="/api/characters"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
+                            Friends</button></a>
+                </div>
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><strong>Add Characters</strong></h3>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" role="form">
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="role">Role</label>
+                                        <input type="text" class="form-control" id="role">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input type="text" class="form-control" id="age">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="force-points">Force Points</label>
+                                        <input type="text" class="form-control" id="force-points">
+                                    </div>
+
+                                </form>
+                                <br>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span
+                                            class="fa fa-fire"></span> Add yourself</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script type="text/javascript">
+        // Question: What does this code do?
+        $("#add-btn").on("click", function (event) {
+            event.preventDefault();
+            var newCharacter = {
+                name: $("#name").val().trim(),
+                role: $("#role").val().trim(),
+                age: $("#age").val().trim(),
+                forcePoints: $("#force-points").val().trim()
+            };
+
+            // Question: What does this code do??
+            $.post("/api/characters", newCharacter)
+                .then(function (data) {
+                    console.log("add.html", data);
+                    alert("Adding character...");
+                });
+        });
+    </script>
+
+</body>
+
+</html>

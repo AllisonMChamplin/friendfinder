@@ -62,3 +62,11 @@ footer {
     border-top: 1px solid #edece4;
     padding-top: 20px;
 }
+
+.sub {
+    margin-top: 50px;
+}
+
+.sub .jumbotron {
+    background: #41a98b;
+}

@@ -20,6 +20,12 @@ $(document).ready(function () {
         console.log("currentBack:", currentBackground);
         $("#random-background").css("background-image", "url(" + currentBackground + ")");
     };
+
+    $('#signup').on("click", function () {
+        console.log("clicky");
+        window.location.replace("http://localhost:3000/add");
+
+    })
     
     var init = function () {
         randomQuote();
