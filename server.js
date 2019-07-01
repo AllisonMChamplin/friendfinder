@@ -2,6 +2,7 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
+var fs = require("fs");
 
 // Sets up the Express App
 // =============================================================
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('./app/public'));
 
-// Star Wars Characters (DATA)
+// Characters (TEST DATA)
 // =============================================================
 var characters = [
     {
@@ -45,7 +46,7 @@ var characters = [
 // Basic route /
 app.get("/", function (req, res, next) {
     console.log('Record Route Activity: /');
-    next()
+    next();
 }, function (req, res) {
     res.sendFile(path.join(__dirname, "./app/public/home.html"));
 });
@@ -53,7 +54,13 @@ app.get("/", function (req, res, next) {
 // add
 app.get('/add', function (req, res, next) {
     console.log('Record Route Activity: /add');
-    next()
+    fs.appendFile("log.txt", "test", function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("log.txt was updated!");
+    });
+    next();
 }, function (req, res) {
     res.sendFile(path.join(__dirname, './app/public/survey.html'));
 });
@@ -61,7 +68,7 @@ app.get('/add', function (req, res, next) {
 // api
 app.get('/api', function (req, res, next) {
     console.log('Record Route Activity: /api');
-    next()
+    next();
 }, function (req, res) {
     res.sendFile(path.join(__dirname, './app/public/survey.html'));
 });
@@ -69,7 +76,7 @@ app.get('/api', function (req, res, next) {
 // Displays all characters
 app.get("/api/characters", function (req, res, next) {
     console.log('Record Route Activity: /api/char/');
-    next()
+    next();
 }, function (req, res) {
     return res.json(characters);
 });
@@ -86,8 +93,34 @@ app.get("/api/characters/:character", function (req, res) {
     return res.json(false);
 });
 
+
+
+// Create New Characters - takes in JSON input
+app.post("/api/characters", function (req, res, next) {
+    console.log('POST: new character');
+    next();
+}, function (req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body parsing middleware
+    var newCharacter = req.body;
+
+    // Using a RegEx Pattern to remove spaces from newCharacter
+    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+    newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
+
+    console.log(newCharacter);
+
+    characters.push(newCharacter);
+
+    res.json(newCharacter);
+});
+
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
+
+
+

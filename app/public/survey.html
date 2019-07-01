@@ -69,8 +69,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="role">Role</label>
-                                        <input type="text" class="form-control" id="role">
+                                        <label for="gender">Gender</label>
+                                        <input type="text" class="form-control" id="gender">
                                     </div>
 
                                     <div class="form-group">
@@ -79,8 +79,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="force-points">Force Points</label>
-                                        <input type="text" class="form-control" id="force-points">
+                                        <label for="cool-points">Cool Points</label>
+                                        <input type="text" class="form-control" id="cool-points">
                                     </div>
 
                                 </form>
@@ -105,15 +105,15 @@
             event.preventDefault();
             var newCharacter = {
                 name: $("#name").val().trim(),
-                role: $("#role").val().trim(),
+                role: $("#gender").val().trim(),
                 age: $("#age").val().trim(),
-                forcePoints: $("#force-points").val().trim()
+                coolPoints: $("#cool-points").val().trim()
             };
 
             // Question: What does this code do??
             $.post("/api/characters", newCharacter)
                 .then(function (data) {
-                    console.log("add.html", data);
+                    console.log("survey.html", data);
                     alert("Adding character...");
                 });
         });
