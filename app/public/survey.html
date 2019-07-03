@@ -109,7 +109,6 @@
                 age: $("#age").val().trim(),
                 coolPoints: $("#cool-points").val().trim()
             };
-
             // Question: What does this code do??
             $.post("/api/characters", newCharacter)
                 .then(function (data) {

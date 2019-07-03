@@ -20,28 +20,34 @@ var characters = [
     {
         routeName: "yoda",
         name: "Yoda",
-        role: "Jedi Master",
+        gender: "Jedi Master",
         age: 900,
-        forcePoints: 2000
+        coolPoints: 2000
     },
     {
         routeName: "darthmaul",
         name: "Darth Maul",
-        role: "Sith Lord",
+        gender: "Sith Lord",
         age: 200,
-        forcePoints: 1200
+        coolPoints: 1200
     },
     {
         routeName: "obiwankenobi",
         name: "Obi Wan Kenobi",
-        role: "Jedi Master",
+        gender: "Jedi Master",
         age: 55,
-        forcePoints: 1350
+        coolPoints: 1350
     }
 ];
 
 // // Routes
 // // =============================================================
+
+// Log route? /
+// app.use(function (req, res, next) {
+//     console.log('Time:', Date.now())
+//     next()
+// });
 
 // Basic route /
 app.get("/", function (req, res, next) {
@@ -75,7 +81,7 @@ app.get('/api', function (req, res, next) {
 
 // Displays all characters
 app.get("/api/characters", function (req, res, next) {
-    console.log('Record Route Activity: /api/char/');
+    console.log('Record Route Activity: /api/characters!');
     next();
 }, function (req, res) {
     return res.json(characters);
