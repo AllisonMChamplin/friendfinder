@@ -9,7 +9,12 @@ module.exports = function (app) {
     app.post('/api/survey', function (req, res) {
         console.log("hi");
         userData.push(req.body);
-        res.json(userData);
+        // res.json(userData);
+    });
+
+    app.post('/api/clear', function (req, res) {
+        userData = [];
+        console.log("cleared user data");
     });
 
 }

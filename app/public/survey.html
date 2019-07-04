@@ -85,6 +85,17 @@
         </div>
     </main>
 
+
+    <footer class="text-muted">
+            <div class="container">
+                <p class="float-right">
+                    <a href="#">Back to top</a>
+                </p>
+                <p><a href="#" id="clear">Clear Data</a> | <a href="/api/users">API User List</a></p>
+                <p>&copy; 2019 Allison M Champlin | Thanks for checking out my project!</p>
+            </div>
+        </footer>
+
     <script type="text/javascript">
 
         $("#submit").on("click", function () {
@@ -105,8 +116,11 @@
                 if (data == true) {
                     console.log("data yay");
                     console.log(data);
+                    location.reload();
                 }
             });
+
+
 
         });
 

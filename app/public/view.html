@@ -60,6 +60,15 @@
         </div>
     </main>
 
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p><a href="#" id="clear">Clear Data</a> | <a href="/api/users">API User List</a></p>
+            <p>&copy; 2019 Allison M Champlin | Thanks for checking out my project!</p>
+        </div>
+    </footer>
 
     <script type="text/javascript">
 
@@ -89,9 +98,29 @@
                     }
                 });
         };
+
+        function clearUsers() {
+            console.log("clearUsers");
+            var currentURL = window.location.origin;
+
+            $.ajax({
+                url: currentURL + "/api/clear",
+                method: "POST"
+            })
+        };
+
+
+        $("#clear").on("click", function () {
+            console.log("clearing data...");
+            clearUsers();
+            location.reload();
+        })
+
+
         runUserQuery();
 
     </script>
 
 </body>
+
 </html>
