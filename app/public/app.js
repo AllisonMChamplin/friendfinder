@@ -17,15 +17,21 @@ $(document).ready(function () {
     var randomBackground = function () {
         var rand = Math.floor(Math.random() * 2);
         currentBackground = myBackground[rand];
-        console.log("currentBack:", currentBackground);
+        // console.log("currentBack:", currentBackground);
         $("#random-background").css("background-image", "url(" + currentBackground + ")");
     };
 
+    $('#login').on("click", function () {
+        console.log("clicky");
+        window.location.replace("/survey");
+
+    });
+
     $('#signup').on("click", function () {
         console.log("clicky");
-        window.location.replace("http://localhost:3000/add");
+        window.location.replace("/survey");
 
-    })
+    });
     
     var init = function () {
         randomQuote();

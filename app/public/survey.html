@@ -9,6 +9,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+
+
     <script src="app.js"></script>
 
 </head>
@@ -27,62 +29,48 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="/view">View</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/survey">Survey</a>
                     </li>
                 </ul>
                 <button class="btn my-2 my-sm-0" type="submit" id="login">Log In</button>
                 <button class="btn my-2 my-sm-0" type="submit" id="signup">Sign Up!</button>
-
             </div>
         </nav>
     </header>
 
     <main role="main">
-
         <div class="py-5 sub">
-
             <div class="container">
-                <div class="jumbotron">
-                    <h1>FriendSift</h1>
-                    <h3>The greatest resource in the galaxy for friends!</h3>
-                    <hr>
-                    <a href="/api/characters"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
-                            Friends</button></a>
-                </div>
                 <div class="row">
-
                     <div class="col-12">
-
                         <div class="card">
                             <div class="card-header">
-                                <h3><strong>Add Characters</strong></h3>
+                                <h3><strong>Sign Up</strong></h3>
                             </div>
                             <div class="card-body">
                                 <form method="POST" role="form">
-
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name">
+                                        <label for="username">Name</label>
+                                        <input type="text" class="form-control" id="username">
                                     </div>
-
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <input type="text" class="form-control" id="gender">
                                     </div>
-
                                     <div class="form-group">
                                         <label for="age">Age</label>
                                         <input type="text" class="form-control" id="age">
                                     </div>
-
                                     <div class="form-group">
                                         <label for="cool-points">Cool Points</label>
                                         <input type="text" class="form-control" id="cool-points">
                                     </div>
-
                                 </form>
                                 <br>
                                 <div class="text-right">
@@ -91,31 +79,56 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script> -->
+
     <script type="text/javascript">
-        // Question: What does this code do?
-        $("#add-btn").on("click", function (event) {
-            event.preventDefault();
-            var newCharacter = {
-                name: $("#name").val().trim(),
-                role: $("#gender").val().trim(),
-                age: $("#age").val().trim(),
-                coolPoints: $("#cool-points").val().trim()
-            };
-            // Question: What does this code do??
-            $.post("/api/characters", newCharacter)
-                .then(function (data) {
-                    console.log("survey.html", data);
-                    alert("Adding character...");
+
+        function runUserQuery() {
+            console.log("hi?");
+            var currentURL = window.location.origin;
+            console.log("currentURL: ", currentURL);
+
+            $.ajax({url: currentURL + "/api/users", method: "GET"})
+            .done(function (userData) {
+                    console.log("---------------------------------------------------------");
+                    console.log("URL: " + currentURL + "/api/users");
+                    console.log("---------------------------------------------------------");
+                    console.log(userData);
+                    console.log("---------------------------------------------------------");
                 });
-        });
+        }
+        runUserQuery();
+
+
+        // // Question: What does this code do?
+        // $("#add-btn").on("click", function (event) {
+        //     event.preventDefault();
+        //     var newCharacter = {
+        //         username: $("#username").val().trim(),
+        //         role: $("#gender").val().trim(),
+        //         age: $("#age").val().trim(),
+        //         coolPoints: $("#cool-points").val().trim()
+        //     };
+        //     // Question: What does this code do??
+        //     $.post("/api/users", newCharacter)
+        //         .then(function (data) {
+        //             console.log("survey.html", data);
+        //             alert("Adding character...");
+        //         });
+        // });
+
+
     </script>
 
 </body>
