@@ -71,3 +71,9 @@ footer {
     background: #da4f49;
     color: #fff;
 }
+
+.user {
+    margin-bottom: 20px;
+    width: 33%;
+    float: left;
+}

@@ -9,7 +9,6 @@ module.exports = function (app) {
     app.post('/api/survey', function (req, res) {
         console.log("hi");
         userData.push(req.body);
-        // res.json(userData);
     });
 
     app.post('/api/clear', function (req, res) {
