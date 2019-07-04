@@ -9,7 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="app.js"></script>
+    <script src="match.js"></script>
 </head>
 
 <body>
@@ -28,13 +28,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/view">View <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/survey">Survey</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/match">Match</a>
                     </li>
                 </ul>
@@ -51,11 +51,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3><strong>View Friends</strong></h3>
+                                <h3><strong>Your Matching Friend!</strong></h3>
                             </div>
                             <div class="card-body" id="user-list">
 
                             </div>
+                            <div id="compatability"></div>
                         </div>
                     </div>
                 </div>
@@ -73,57 +74,5 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-
-        function runUserQuery() {
-            // console.log("hi?");
-            var currentURL = window.location.origin;
-            // console.log("currentURL: ", currentURL);
-
-            $.ajax({
-                url: currentURL + "/api/users",
-                method: "GET"
-            })
-                .done(function (userData) {
-                    // console.log("---------------------------------------------------------");
-                    // console.log("URL: " + currentURL + "/api/users");
-                    // console.log("---------------------------------------------------------");
-                    // console.log(userData);
-                    // console.log("---------------------------------------------------------");
-
-                    for (var i = 0; i < userData.length; i++) {
-                        // console.log(userData[i]);
-                        var user = $("<div class='clearfix'>");
-                        user.addClass("user");
-                        user.attr("id", "user-" + i);
-                        $("#user-list").append(user);
-                        $("#user-" + i).append('<h2 style="display: inline-block">' + userData[i].userName + '</h2><img src="' + userData[i].photolink + '" style="float:left;">');
-                    }
-                });
-        };
-
-        function clearUsers() {
-            console.log("clearUsers");
-            var currentURL = window.location.origin;
-
-            $.ajax({
-                url: currentURL + "/api/clear",
-                method: "POST"
-            })
-        };
-
-
-        $("#clear").on("click", function () {
-            console.log("clearing data...");
-            clearUsers();
-            location.reload();
-        })
-
-
-        runUserQuery();
-
-    </script>
-
 </body>
-
 </html>

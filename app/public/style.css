@@ -77,3 +77,10 @@ footer {
     width: 33%;
     float: left;
 }
+
+.user2 {
+    margin-bottom: 20px;
+    width: 50%;
+    border: 1px solid black;
+    float: left;
+}
