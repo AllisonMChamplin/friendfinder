@@ -50,8 +50,8 @@
                             <div class="card-header">
                                 <h3><strong>View Users</strong></h3>
                             </div>
-                            <div class="card-body">
-                               users
+                            <div class="card-body" id="user-list">
+                                users
                             </div>
                         </div>
                     </div>
@@ -60,25 +60,38 @@
         </div>
     </main>
 
+
     <script type="text/javascript">
-        // Question: What does this code do?
-        $("#add-btn").on("click", function (event) {
-            event.preventDefault();
-            var newCharacter = {
-                username: $("#username").val().trim(),
-                role: $("#gender").val().trim(),
-                age: $("#age").val().trim(),
-                coolPoints: $("#cool-points").val().trim()
-            };
-            // Question: What does this code do??
-            $.post("/api/users", newCharacter)
-                .then(function (data) {
-                    console.log("survey.html", data);
-                    alert("Adding character...");
+
+        function runUserQuery() {
+            console.log("hi?");
+            var currentURL = window.location.origin;
+            console.log("currentURL: ", currentURL);
+
+            $.ajax({
+                url: currentURL + "/api/users",
+                method: "GET"
+            })
+                .done(function (userData) {
+                    console.log("---------------------------------------------------------");
+                    console.log("URL: " + currentURL + "/api/users");
+                    console.log("---------------------------------------------------------");
+                    console.log(userData);
+                    console.log("---------------------------------------------------------");
+
+                    for (var i = 0; i < userData.length; i++) {
+                        console.log(userData[i]);
+                        var user = $("<div>");
+                        user.addClass("user");
+                        user.attr("id", "user-" + i);
+                        $("#user-list").append(user);
+                        $("#user-" + i).append('<h2><span class="label label-primary">' + i + '</span> | ' + userData[i].name + '</h2>');
+                    }
                 });
-        });
+        };
+        runUserQuery();
+
     </script>
 
 </body>
-
 </html>

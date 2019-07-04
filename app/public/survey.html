@@ -85,51 +85,7 @@
         </div>
     </main>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script> -->
 
-    <script type="text/javascript">
-
-        function runUserQuery() {
-            console.log("hi?");
-            var currentURL = window.location.origin;
-            console.log("currentURL: ", currentURL);
-
-            $.ajax({url: currentURL + "/api/users", method: "GET"})
-            .done(function (userData) {
-                    console.log("---------------------------------------------------------");
-                    console.log("URL: " + currentURL + "/api/users");
-                    console.log("---------------------------------------------------------");
-                    console.log(userData);
-                    console.log("---------------------------------------------------------");
-                });
-        }
-        runUserQuery();
-
-
-        // // Question: What does this code do?
-        // $("#add-btn").on("click", function (event) {
-        //     event.preventDefault();
-        //     var newCharacter = {
-        //         username: $("#username").val().trim(),
-        //         role: $("#gender").val().trim(),
-        //         age: $("#age").val().trim(),
-        //         coolPoints: $("#cool-points").val().trim()
-        //     };
-        //     // Question: What does this code do??
-        //     $.post("/api/users", newCharacter)
-        //         .then(function (data) {
-        //             console.log("survey.html", data);
-        //             alert("Adding character...");
-        //         });
-        // });
-
-
-    </script>
 
 </body>
 
