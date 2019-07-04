@@ -7,54 +7,43 @@ $(document).ready(function () {
             method: "GET"
         })
             .done(function (userData) {
-                for (var i = 0; i < 2; i++) {
-                    // console.log(userData[i]);
-                    var user = $("<div class='clearfix'>");
-                    user.addClass("user2");
-                    user.attr("id", "user-" + i);
-                    $("#user-list").append(user);
-                    $("#user-" + i).append('<h2 style="display: inline-block">' + userData[i].userName + '</h2><img src="' + userData[i].photolink + '" style="float:left;">');
-                };
                 ajaxTest(userData);
-
             });
     };
 
-    function ajaxTest(data) {
+    function ajaxTest(userData) {
         console.log("ajaxTest function:");
-        // console.log("Data? ", data);
 
-        var userOne = data[0].scores;
-        var userTwo = data[1].scores;
+        var userOne = userData[0].scores;
+        var userTwo = userData[1].scores;
         var differenceArray = [];
+        var compatabilityScore = 0;
 
         for (var i = 0; i < userOne.length; i++) {
             console.log("userOne - userTwo", userOne[i] + "-" + userTwo[i]);
-            var x = userOne[i] - userTwo[i];
+            var x = Math.abs(userOne[i] - userTwo[i]);
             console.log("x: ", x);
-            console.log("Math.abs(x): ", Math.abs(x));
-            differenceArray.push(Math.abs(x));
+            differenceArray.push(x);
+            compatabilityScore += x;
             console.log("differenceArray: ", differenceArray);
+            console.log("compat: ", compatabilityScore);
         }
 
-        var a = $("#user-0");
-        var b = $("#user-1");
-        var c = $('#compatability');
+        var wrap = $("<div class='wrap' class='clearfix'>");
+        var c = $("<h3 class='compatability-score'>");
+        c.append("Score: ", compatabilityScore, "<br>");
+        c.append(differenceArray);
+        var targetDiv = $("#user-list");
+        wrap.append(c);
 
-        a.append(userOne);
-        b.append(userTwo);
-        c.append("Array of differences: " + differenceArray + "<br>" + "Score: ");
-
-        c.append(differenceArray.reduce(myFunc));
-        function myFunc(total, num) {
-            return total + num;
-        }
-
-
-
-
-
-
+        for (var i = 0; i < 2; i++) {
+            var a = $("<div class='user2'>");
+            var img = $("<img>");
+            img.attr("src", userData[i].photolink);
+            a.append(userData[i].userName, img, userData[i].scores);
+            wrap.append(a);
+        };
+        targetDiv.append(wrap);
     };
 
 
