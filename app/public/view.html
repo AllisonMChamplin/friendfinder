@@ -48,10 +48,10 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3><strong>View Users</strong></h3>
+                                <h3><strong>View Friends</strong></h3>
                             </div>
                             <div class="card-body" id="user-list">
-                                users
+                                Friends
                             </div>
                         </div>
                     </div>
@@ -73,9 +73,9 @@
     <script type="text/javascript">
 
         function runUserQuery() {
-            console.log("hi?");
+            // console.log("hi?");
             var currentURL = window.location.origin;
-            console.log("currentURL: ", currentURL);
+            // console.log("currentURL: ", currentURL);
 
             $.ajax({
                 url: currentURL + "/api/users",
@@ -94,7 +94,7 @@
                         user.addClass("user");
                         user.attr("id", "user-" + i);
                         $("#user-list").append(user);
-                        $("#user-" + i).append('<h2><span class="label label-primary">' + i + '</span> | ' + userData[i].name + '</h2>');
+                        $("#user-" + i).append('<h2><span class="label label-primary">' + i + '</span> | ' + userData[i].userName + '</h2><img src="' + userData[i].photolink + '">');
                     }
                 });
         };
