@@ -6,5 +6,12 @@ module.exports = function (app) {
         res.json(userData);
     })
 
-};
+    app.post('/api/survey', function (req, res) {
+        console.log("hi");
+        userData.push(req.body);
+        res.json(userData);
+    });
+
+}
+
 

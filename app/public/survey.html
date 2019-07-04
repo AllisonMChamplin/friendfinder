@@ -28,14 +28,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/view">View</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/survey">Survey</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/survey">Survey <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 <button class="btn my-2 my-sm-0" type="submit" id="login">Log In</button>
@@ -74,7 +74,7 @@
                                 </form>
                                 <br>
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span
+                                    <button type="submit" class="btn btn-primary btn-md" id="submit"><span
                                             class="fa fa-fire"></span> Add yourself</button>
                                 </div>
                             </div>
@@ -85,7 +85,32 @@
         </div>
     </main>
 
+    <script type="text/javascript">
 
+        $("#submit").on("click", function () {
+            console.log("clicky");
+
+            var newUser = {
+                name: $('#username').val().trim(),
+                gender: $('#gender').val().trim(),
+                age: $('#age').val().trim(),
+                coolPoints: $('#cool-points').val().trim()
+            };
+
+            // console.log("newUsr: ", newUser);
+            var currentURL = window.location.origin;
+
+            $.post(currentURL + "/api/survey", newUser, function (data) {
+                // console.log()
+                if (data == true) {
+                    console.log("data yay");
+                    console.log(data);
+                }
+            });
+
+        });
+
+    </script>
 
 </body>
 
