@@ -15,8 +15,11 @@ $(document).ready(function () {
 
     function testMany(userData) {
         console.log("testMany function:");
+        
         var userOne = userData.splice(0, 1);
+        console.log("userOne", userOne[0].userName);
         var userArray = userData;
+        console.log("UserArray", userArray);
         var matchOrderArray = [];
 
         var maxIndex = -1;
@@ -30,7 +33,6 @@ $(document).ready(function () {
             var total = 0;
 
             for (var j = 0; j < userArray.length; j++) {
-
                 var x = userOne[0].scores[j];
                 var y = userArray[i].scores[j];
                 var z = x - y;
@@ -48,16 +50,44 @@ $(document).ready(function () {
         console.log("maxIndex", maxIndex);
         console.log("winner", userArray[maxIndex]);
 
-        userListDiv.append("<h2>winner: " + userArray[maxIndex].userName + "</h2>");
-        userListDiv.append("<br><br>");
+        var modalDiv = $(".modal-body");
 
-        pickMatch(matchOrderArray);
-        // console.log("matchOrderArray:", matchOrderArray);
+        // modalDiv.append("<h2>Meet your NEW BFF!</h2>");
+        modalDiv.append("<h3>" + userArray[maxIndex].userName + "</h3>");
+        modalDiv.append('<img src="' + userArray[maxIndex].photolink + '">');
+        modalDiv.append("<br><br>");
+
+        $('#myModal').modal();
+
+        
+        var youBox = $("<div class='matchwrap'>");
+        youBox.append("<h3>You:</h3>");
+        // youBox.append("<h3>" + userOne[0].userName + "</h3>");
+        youBox.append('<img src="' + userOne[0].photolink + '">');
+        
+        var friendBox = $("<div class='matchwrap'>");
+        friendBox.append("<h3>Your match: " + userArray[maxIndex].userName + "</h3>");
+        friendBox.append('<img src="' + userArray[maxIndex].photolink + '">');
+
+        $("#user-list").append(youBox);
+        $("#user-list").append(friendBox);
+        // $("#user-list").append('<br><br>');
+        // $("#user-list").append("<h4>Your Compatability Score is:</h4>");
+        // $("#user-list").append("");
+
+
+
+
+
+
+        compareScoresDisplay();
 
     };
 
-    var pickMatch = function (x)  {
-
+    var compareScoresDisplay = function (x)  {
+        var compareDiv = $("<div id='compare-div'>");
+        // compareDiv.append("hey");
+        $("#user-list").append(compareDiv);
     }
 
 

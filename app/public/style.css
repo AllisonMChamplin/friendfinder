@@ -84,3 +84,18 @@ footer {
     border: 1px solid black;
     float: left;
 }
+
+.matchwrap {
+    /* border: 1px solid #ccc; */
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+input.error {
+    border-color: red;
+  }
+
+  .required-field {
+      color: red;
+  }

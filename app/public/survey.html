@@ -53,19 +53,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" id="formwrapper">
                                 <h2><strong>Survey Questions</strong></h2>
                             </div>
                             <div class="card-body">
                                 <h3>About You</h3>
                                 <form method="POST" role="form">
-                                    <div class="form-group">
-                                        <label for="username">Name (Required)</label>
-                                        <input type="text" class="form-control" id="username">
+                                    <div class="form-group" id="namegrp">
+                                        <label for="username">First name (Required)</label>
+                                        <input type="text" class="form-control" id="username" placeholder="First name"
+                                            required>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="photogrp">
                                         <label for="photo-link">Link to Photo Image (Required)</label>
-                                        <input type="text" class="form-control" id="photo-link">
+                                        <input type="text" class="form-control" id="photo-link" required>
                                     </div>
                                     <div class="form-group">
                                         <h4>Question 1</h4>
@@ -221,35 +222,80 @@
 
     <script type="text/javascript">
 
-        $("#submit").on("click", function () {
-            console.log("clicky");
+        $("#submit").on("click", function (event) {
 
-            var newUser = {
+
+            console.log("clicky");
+            // event.preventDefault();
+
+            var userValidate = $('#username').val().trim();
+            var photoValidate = $('#photo-link').val().trim();
+
+            if (!userValidate) {
+                console.log("userValidate false");
+                $('#username').focus();
+                var message = $("<p class='required-field'>");
+                message.append("This field is required.");
+                $('#namegrp').append(message);
+                return;
+            } else {
+                console.log("userValidate true");
+            };
+
+            if (!photoValidate) {
+                console.log("photoValidate false");
+                $('#photo-link').focus();
+                var message = $("<p class='required-field'>");
+                message.append("This field is required.");
+                $('#photogrp').append(message);
+                return;
+            } else if (photoValidate) {
+                console.log("photoValidate true");
+            };
+
+            var newUser = [];
+
+            var scoresArray = [];
+            scoresArray.push($('#q1').val().trim());
+            scoresArray.push($('#q2').val().trim());
+            scoresArray.push($('#q3').val().trim());
+            scoresArray.push($('#q4').val().trim());
+            scoresArray.push($('#q5').val().trim());
+            scoresArray.push($('#q6').val().trim());
+            scoresArray.push($('#q7').val().trim());
+            scoresArray.push($('#q8').val().trim());
+            scoresArray.push($('#q9').val().trim());
+            scoresArray.push($('#q10').val().trim());
+
+            newUser = {
+                routename: $('#username').val().trim(),
                 userName: $('#username').val().trim(),
                 photolink: $('#photo-link').val().trim(),
-                question1: $('#q1').val().trim(),
-                question2: $('#q2').val().trim(),
-                question3: $('#q3').val().trim(),
-                question4: $('#q4').val().trim(),
-                question5: $('#q5').val().trim(),
-                question6: $('#q6').val().trim(),
-                question7: $('#q7').val().trim(),
-                question8: $('#q8').val().trim(),
-                question9: $('#q9').val().trim(),
-                question10: $('#q10').val().trim()
+                scores: scoresArray
             };
 
             console.log("newUsr: ", newUser);
+
             var currentURL = window.location.origin;
 
-            $.post(currentURL + "/api/survey", newUser, function (data) {
-                // console.log()
-                if (data == true) {
-                    console.log("data yay");
-                    console.log(data);
-                    location.reload();
-                }
-            });
+            $.post(currentURL + "/api/survey", newUser)
+                .then(function (data) {
+                    console.log("data? ", data);
+                    if (data) {
+                        console.log("data yay");
+                        console.log(data);
+                        // console.log("Adding friend...");
+                        // processForm();
+                        // location.assign("/match");
+
+                        // location.reload();
+                    }
+                });
+
+            // var processForm = function () {
+            //     console.log("HI")
+            // }
+
 
 
 
