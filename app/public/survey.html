@@ -53,10 +53,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header" id="formwrapper">
+                            <div class="card-header">
                                 <h2><strong>Survey Questions</strong></h2>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="formwrapper">
                                 <h3>About You</h3>
                                 <form method="POST" role="form">
                                     <div class="form-group" id="namegrp">
@@ -65,7 +65,9 @@
                                             required>
                                     </div>
                                     <div class="form-group" id="photogrp">
-                                        <label for="photo-link">Link to Photo Image (Required)</label>
+                                        <label for="photo-link">Link to Photo Image (Required) Grab a random image: <a
+                                                href='#' id='get-image'>Male </a>| <a href='#'
+                                                id='get-fimage'>Female</a></label>
                                         <input type="text" class="form-control" id="photo-link" required>
                                     </div>
                                     <div class="form-group">
@@ -222,6 +224,22 @@
 
     <script type="text/javascript">
 
+        var randomImg = "";
+        $("#get-image").on("click", function (event) {
+            console.log("clicky2");
+            var x = Math.floor((Math.random() * 100) + 1);
+            var randomImg = "https://randomuser.me/api/portraits/men/" + x + ".jpg";
+            $('#photo-link').val(randomImg);
+            console.log("randomImg: ", randomImg);
+        });
+        $("#get-fimage").on("click", function (event) {
+            console.log("clicky2");
+            var x = Math.floor((Math.random() * 100) + 1);
+            var randomImg = "https://randomuser.me/api/portraits/women/" + x + ".jpg";
+            $('#photo-link').val(randomImg);
+            console.log("randomImg: ", randomImg);
+        });
+
         $("#submit").on("click", function (event) {
 
 
@@ -253,6 +271,8 @@
                 console.log("photoValidate true");
             };
 
+
+
             var newUser = [];
 
             var scoresArray = [];
@@ -281,23 +301,17 @@
             $.post(currentURL + "/api/survey", newUser)
                 .then(function (data) {
                     console.log("data? ", data);
-                    if (data) {
-                        console.log("data yay");
+                    if (data === true) {
                         console.log(data);
-                        // console.log("Adding friend...");
-                        // processForm();
-                        // location.assign("/match");
-
-                        // location.reload();
+                        console.log("data yay");
+                        postSuccess();
                     }
                 });
 
-            // var processForm = function () {
-            //     console.log("HI")
-            // }
-
-
-
+            var postSuccess = function () {
+                console.log("postSuccess");
+                $("#formwrapper").empty();
+            }
 
         });
 
