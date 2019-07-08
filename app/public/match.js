@@ -15,6 +15,9 @@ $(document).ready(function () {
 
     function testMany(userData) {
         console.log("testMany function:");
+        console.log("userData", userData);
+        userData.reverse();
+        console.log("userData", userData);
         
         var userOne = userData.splice(0, 1);
         console.log("userOne", userOne[0].userName);

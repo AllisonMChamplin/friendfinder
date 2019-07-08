@@ -10,8 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 
-
-    <script src="app.js"></script>
+    <script src="survey.js"></script>
 
 </head>
 
@@ -37,9 +36,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/survey">Survey <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="/match">Match</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- <button class="btn my-2 my-sm-0" type="submit" id="login">Log In</button>
                 <button class="btn my-2 my-sm-0" type="submit" id="signup">Sign Up!</button> -->
@@ -54,7 +53,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2><strong>Survey Questions</strong></h2>
+                                <h2 id="titlechange"><strong>Survey Questions</strong></h2>
                             </div>
                             <div class="card-body" id="formwrapper">
                                 <h3>About You</h3>
@@ -205,6 +204,30 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Meet your NEW BFF!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+
                     </div>
                 </div>
             </div>
@@ -222,100 +245,14 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-
-        var randomImg = "";
-        $("#get-image").on("click", function (event) {
-            console.log("clicky2");
-            var x = Math.floor((Math.random() * 100) + 1);
-            var randomImg = "https://randomuser.me/api/portraits/men/" + x + ".jpg";
-            $('#photo-link').val(randomImg);
-            console.log("randomImg: ", randomImg);
-        });
-        $("#get-fimage").on("click", function (event) {
-            console.log("clicky2");
-            var x = Math.floor((Math.random() * 100) + 1);
-            var randomImg = "https://randomuser.me/api/portraits/women/" + x + ".jpg";
-            $('#photo-link').val(randomImg);
-            console.log("randomImg: ", randomImg);
-        });
-
-        $("#submit").on("click", function (event) {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
-            console.log("clicky");
-            // event.preventDefault();
-
-            var userValidate = $('#username').val().trim();
-            var photoValidate = $('#photo-link').val().trim();
-
-            if (!userValidate) {
-                console.log("userValidate false");
-                $('#username').focus();
-                var message = $("<p class='required-field'>");
-                message.append("This field is required.");
-                $('#namegrp').append(message);
-                return;
-            } else {
-                console.log("userValidate true");
-            };
-
-            if (!photoValidate) {
-                console.log("photoValidate false");
-                $('#photo-link').focus();
-                var message = $("<p class='required-field'>");
-                message.append("This field is required.");
-                $('#photogrp').append(message);
-                return;
-            } else if (photoValidate) {
-                console.log("photoValidate true");
-            };
-
-
-
-            var newUser = [];
-
-            var scoresArray = [];
-            scoresArray.push($('#q1').val().trim());
-            scoresArray.push($('#q2').val().trim());
-            scoresArray.push($('#q3').val().trim());
-            scoresArray.push($('#q4').val().trim());
-            scoresArray.push($('#q5').val().trim());
-            scoresArray.push($('#q6').val().trim());
-            scoresArray.push($('#q7').val().trim());
-            scoresArray.push($('#q8').val().trim());
-            scoresArray.push($('#q9').val().trim());
-            scoresArray.push($('#q10').val().trim());
-
-            newUser = {
-                routename: $('#username').val().trim(),
-                userName: $('#username').val().trim(),
-                photolink: $('#photo-link').val().trim(),
-                scores: scoresArray
-            };
-
-            console.log("newUsr: ", newUser);
-
-            var currentURL = window.location.origin;
-
-            $.post(currentURL + "/api/survey", newUser)
-                .then(function (data) {
-                    console.log("data? ", data);
-                    if (data === true) {
-                        console.log(data);
-                        console.log("data yay");
-                        postSuccess();
-                    }
-                });
-
-            var postSuccess = function () {
-                console.log("postSuccess");
-                $("#formwrapper").empty();
-            }
-
-        });
-
-    </script>
 
 </body>
 

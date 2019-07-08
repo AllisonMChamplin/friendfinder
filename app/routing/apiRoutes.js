@@ -16,7 +16,7 @@ module.exports = function (app) {
     });
 
     app.post('/api/clear', function (req, res) {
-        userData = [];
+        userData = require ('../data/friends.js');
         console.log("cleared user data");
     });
 
