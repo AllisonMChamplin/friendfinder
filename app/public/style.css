@@ -41,6 +41,7 @@ background-color: #254441;
 .btn {
     background: #ff6f59;
     color: #fff;
+    border: none;
 }
 
 .btn:hover {
@@ -73,9 +74,14 @@ footer {
 }
 
 .user {
-    margin-bottom: 20px;
-    width: 33%;
+    margin-bottom: 40px;
+    width: 190px;
     float: left;
+    border: 1px solid #ccc;
+    margin-right: 23px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
 }
 
 .user2 {
@@ -98,4 +104,15 @@ input.error {
 
   .required-field {
       color: red;
+  }
+
+  .matcher {
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 40px 0 20px;
+    border-radius: 5px;
+  }
+
+  .matcher img {
+      border-radius: 15px;
   }

@@ -16,10 +16,10 @@ module.exports = function (app) {
     });
 
     app.post('/api/clear', function (req, res) {
-        userData = require ('../data/friends.js');
+        userData.splice(10);
         console.log("cleared user data");
     });
 
-}
+};
 
 

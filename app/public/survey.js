@@ -71,8 +71,8 @@ $(document).ready(function () {
             photolink: $('#photo-link').val().trim(),
             scores: scoresArray
         };
-        console.log("newUser: ", newUser);
-        console.log("newUser: ", newUser.scores);
+        // console.log("newUser: ", newUser);
+        // console.log("newUser: ", newUser.scores);
 
         addNewUser();
     };
@@ -81,10 +81,10 @@ $(document).ready(function () {
         var currentURL = window.location.origin;
         $.post(currentURL + "/api/survey", newUser)
             .then(function (data) {
-                console.log("data? ", data);
+                // console.log("data? ", data);
                 if (data === true) {
-                    console.log(data);
-                    console.log("data yay");
+                    // console.log(data);
+                    // console.log("data yay");
                     postSuccess();
                 }
             });
@@ -109,8 +109,8 @@ $(document).ready(function () {
     var findFriend = function (userData) {
         var userOne = newUser;
         var friendsList = userData.slice(0, 9);
-        console.log("userOne", userOne);
-        console.log("friendsList", friendsList);
+        // console.log("userOne", userOne);
+        // console.log("friendsList", friendsList);
         var maxIndex = -1;
         var maxValue = -1;
 
@@ -135,7 +135,7 @@ $(document).ready(function () {
             }
 
             winner = friendsList[maxIndex];
-            console.log("winner", winner);
+            // console.log("winner", winner);
 
         }
 
@@ -143,13 +143,14 @@ $(document).ready(function () {
     }
 
     var callModal = function (userOne, winner) {
-        console.log("userOne", userOne.userName);
-        console.log("winner", winner);
+        // console.log("userOne", userOne.userName);
+        // console.log("winner", winner);
 
         var modalDiv = $(".modal-body");
-        console.log("test2", winner);
-        modalDiv.append("You: " + JSON.stringify(userOne.userName) + "<br><br>");
-        modalDiv.append("Your new BFF: " + JSON.stringify(winner.userName) + "<br><br>");
+        modalDiv.addClass('text-center');
+        // console.log("test2", winner);
+        // modalDiv.append("You: " + JSON.stringify(userOne.userName) + "<br><br>");
+        modalDiv.append("<div class='matcher'><h3>Your new BFF is:</h3><br><h2>" + JSON.stringify(winner.userName) + "</h2><br>" + "<img src='" +winner.photolink + "'><br><br></div>");
 
         $('#myModal').modal();
     };

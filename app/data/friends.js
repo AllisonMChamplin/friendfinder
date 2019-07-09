@@ -59,6 +59,12 @@ var friendsArray = [
         userName: "Virgil",
         photolink: "https://randomuser.me/api/portraits/men/31.jpg",
         scores: [1,2,3,4,5,4,3,2,1,5]
+    },
+    {
+        routeName: "billy",
+        userName: "Billy",
+        photolink: "https://randomuser.me/api/portraits/men/11.jpg",
+        scores: [4,3,1,5,1,3,1,5,2,1]
     }
 ];
 
