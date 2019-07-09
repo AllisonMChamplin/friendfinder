@@ -9,7 +9,8 @@ You will need the following to install:
 * [jQuery](https://www.npmjs.com/package/jquery) jQuery is a fast, small, and feature-rich JavaScript library.
 * [Heroku](https://www.npmjs.com/package/heroku) The Heroku CLI is used to manage Heroku apps from the command line.
 
-s### Screenshots
+### Screenshots
+
 Home Page:
 <br><br>
 <img src="https://allisonmchamplin.github.io/assets/images/friend-screen1.jpg" width="650" title="Homepage View"><br><br>
